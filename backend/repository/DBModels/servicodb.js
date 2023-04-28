@@ -1,6 +1,6 @@
-const Cliente = require('./cliente.js');
+const Cliente = require('./clientedb.js');
 const Sequelize = require('sequelize');
-const database = require('./db_sequelize.js');
+const database = require('../../config/sequelizeModel.js');
 
 const Servico = database.define("servico", {
     id: {

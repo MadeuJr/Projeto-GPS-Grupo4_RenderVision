@@ -6,3 +6,5 @@ const sequelize = new Sequelize("GPS", "root", "4519", {
 });
 
 module.exports = sequelize;
+
+//exporta as credenciais do banco
