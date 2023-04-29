@@ -1,6 +1,6 @@
 const Cliente = require('./clientedb.js');
 const Sequelize = require('sequelize');
-const database = require('../../config/sequelizeModel.js');
+const database = require('./sequelize.js');
 
 const Servico = database.define("servico", {
     id: {

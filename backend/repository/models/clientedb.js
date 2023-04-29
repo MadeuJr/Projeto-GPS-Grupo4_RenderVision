@@ -1,4 +1,4 @@
-const database = require('../../config/sequelizeModel.js');
+const database = require('./sequelize.js');
 const Sequelize = require('sequelize');
 
 const Cliente = database.define("cliente",{
@@ -6,6 +6,11 @@ const Cliente = database.define("cliente",{
         type: Sequelize.STRING(14),
         autoIncrement: false,
         primaryKey: true
+    },
+    senha:{
+        type: Sequelize.STRING,
+        primaryKey: false,
+        allowNull: false
     },
     nome:{
         type: Sequelize.STRING,
