@@ -1,40 +1,65 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>Render Vision - Login</title>
+        <%- include ("./includes/head.ejs") %>
     </head>
     <body>
-        <h2>Site login</h2>
 
-        <div>
-            <fieldset>
-                <h3>Entrar</h3>
-                <form name="loginForm" method="post">
-                    <label for="login">Insira seu CPF, CNPJ ou E-mail</label>
-                    <input type="text" name="login">
-                    <label for="pass">Insira sua senha:</label>
-                    <input type="text" name="pass">
-                </form>
-            </fieldset>
-        </div>
-        <div>
-            <fieldset>
-                <h3>Registrar novo usuário</h3>
-                <form name="registerForm" method="post">
-                    <label for="cpf">CPF ou CNPJ</label>
-                    <input type="text" name="cpfcnpj">
-                    <label for="name">Nome ou Nome da Empressa</label>
-                    <input type="text" name="name">
-                    <label for="tel">Telefone</label>
-                    <input type="tel" name="tel">
-                    <label for="email">E-mail</label>
-                    <input type="password" name="pass">
-                    <label for="pass">Senha</label>
-                    <input type="password" name="pass"> <br> <br>
-                    <input type="submit" value="Registrar!">
-                </form>
-            </fieldset>
+        <%- include ("./includes/header.ejs") %>
+
+        <div class="mx-auto p-2 text-center" style="width: 200px;"><h2>Site login</h2></div>
+        
+        <div class="container text-center">
+            <div class="row">
+              <div class="col">
+                    <fieldset class="border border-2 rounded">
+                    <h3>Entrar</h3>
+                    
+                    <form name="loginForm" method="post">
+                        <div class="mb-3">
+                            <label for="login">Insira seu CPF, CNPJ ou E-mail</label>
+                            <input type="text" name="login">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pass">Insira sua senha:</label>
+                            <input type="text" name="pass">
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Entrar!</button>
+                        </div>
+                    </form>
+                    </fieldset>
+              </div>
+              <div class="col">
+                <fieldset class="border border-2 rounded">
+                    <h3>Registrar novo usuário</h3>
+                    <form name="registerForm" method="post">
+                        <div class="mb-3">
+                            <label for="cpf">CPF ou CNPJ</label>
+                            <input type="text" name="cpfcnpj">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Nome ou Nome da Empressa</label>
+                            <input type="text" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tel">Telefone</label>
+                            <input type="tel" name="tel">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">E-mail</label>
+                            <input type="password" name="pass">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pass">Senha</label>
+                            <input type="password" name="pass"> <br> <br>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Registrar!</button>
+                        </div>   
+                    </form>
+                </fieldset>
+              </div>    
         </div>
         <!-- TODO preparar view login e register -->
         <!-- TODO estilizar site -->

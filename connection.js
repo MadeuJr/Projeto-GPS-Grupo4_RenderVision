@@ -14,8 +14,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(Clientes, Servico, Home, Login);
 
-
 app.set("view engine", "ejs");
+app.use(express.static("public"));
+
+app.get('*', function(req, res){
+    res.status(404).send('Not found');
+// TODO preparar pagina 404
+  });
+
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}!`);

@@ -5,27 +5,19 @@ const Cliente = require('../repository/models/clientedb.js');
 
 router.get("/cliente", async (req, res) => {
     res.render("cliente")
-
+//   TODO colocar function de procurar user
 });
 
 router.get("/cliente/:id?", async (req, res) => {
-    const clientes = await Cliente.findByPk(req.params.id);
-    res.status(200).json(clientes);
+//   TODO colocar function de procurar user especifico
 });
 
 router.post("/cliente", async (req, res) => {
-    const {id,nome, email, telefone} = req.body;
-    const clientes = await Cliente.create(id,nome,email,telefone)
-    res.status(200).json(clientes);
+//   TODO colocar function de cadastrar user
 });
 
 router.delete("/cliente/:id?", async (req, res) => {
-    await Cliente.destroy({
-        where:{
-            id: req.params.id
-        }
-    });
-    res.status(200).json({message:'Excluido'});
+//   TODO colocar function de deletar user
 });
 
 
