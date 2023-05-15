@@ -4,8 +4,7 @@ const Servico = require('../repository/models/servicodb');
 
 
 router.get("/servico", async (req, res) => {
-    const servicos = await Servico.findAll();
-    res.status(200).send("Ok")
+    res.render("servico")
 
 });
 

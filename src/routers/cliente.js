@@ -4,8 +4,7 @@ const Cliente = require('../repository/models/clientedb.js');
 
 
 router.get("/cliente", async (req, res) => {
-    const clientes = await Cliente.findAll();
-    res.status(200).json(clientes);
+    res.render("cliente")
 
 });
 
