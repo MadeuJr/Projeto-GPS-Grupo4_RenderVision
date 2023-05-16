@@ -29,7 +29,14 @@ const Cliente = database.define("cliente",{
         autoIncrement: false,
         allowNull: false,
         primaryKey: false
+    },
+    cargo:{
+        type: Sequelize.STRING,
+        autoIncrement: false,
+        allowNull: false,
+        primaryKey: false
     }
+
 })
 
 
