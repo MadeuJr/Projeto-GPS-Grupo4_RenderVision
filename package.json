@@ -2,10 +2,14 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
+    "connect-flash": "^0.1.1",
+    "cpf-cnpj-validator": "^1.0.3",
     "ejs": "^3.1.9",
     "express": "^4.17.1",
+    "express-session": "^1.17.3",
     "mysql2": "^3.2.3",
-    "sequelize": "^6.31.0"
+    "sequelize": "^6.31.0",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

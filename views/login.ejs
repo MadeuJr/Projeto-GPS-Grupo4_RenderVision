@@ -10,6 +10,7 @@
     <%- include ("./includes/header.ejs") %>
 
         <div class="container text-center mt-5 ">
+            <%- include('includes/messages'); %>
             <div class="row position-relative">
                 <div class="col align-middle mt-auto mb-auto">
                     <fieldset class="border border-2 rounded">
@@ -46,10 +47,10 @@
                         <form name="registerForm" method="post" action="/login/register">
                             <div class="row">
                                 <div class="col mb-3">
-                                    <label for="cpf">CPF ou CNPJ:</label>
+                                    <label for="login">CPF ou CNPJ:</label>
                                 </div>
                                 <div class="col mb-3 me-3">
-                                    <input class="form-control border border-dark-subtle" type="text" name="cpfcnpj">
+                                    <input class="form-control border border-dark-subtle" type="text" name="login">
                                 </div>
                             </div>
                             <div class="row">
