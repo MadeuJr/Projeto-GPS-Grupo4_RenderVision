@@ -61,7 +61,7 @@ class Authenticator {
         console.log(validatorlogin.cpf.isValid(this.body.login), "CPF");
         if (!validatorlogin.cpf.isValid(this.body.login)) {
             if (!validatorlogin.cnpj.isValid(this.body.login)) {
-                this.errors.push("CPF ou CNPJ inserido de forma incorreta");
+                this.errors.push("CPF ou CNPJ inválido");
             }
         }
 

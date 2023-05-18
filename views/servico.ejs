@@ -2,18 +2,64 @@
 <!-- TODO estilizar site -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include ("./includes/head.ejs") %>
-    </head>
-    <body>
-        <%- include ("./includes/header-logado.ejs") %>
 
-        <div>
-            <h1>Serviços</h1>
+<head>
+    <%- include ("./includes/head.ejs") %>
+</head>
+
+<body>
+    <%- include ("./includes/header-logado.ejs") %>
+
+
+        <div class="container text-center mt-5 ">
+            <%- include('includes/messages'); %>
+                <div>
+                    <h1>Serviços</h1>
+                    <br>
+                </div>
+
+                <div>
+                    <div class="table-responsive">
+                        <table class="table border border-dark-subtle ">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border border-dark-subtle">ID Serviço</th>
+                                    <th scope="col" class="border border-dark-subtle">Valor</th>
+                                    <th scope="col" class="border border-dark-subtle">Tempo de Entrega</th>
+                                    <th scope="col" class="border border-dark-subtle">Tipo</th>
+                                    <th scope="col" class="border border-dark-subtle">Edição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (arrayServicos.length> 0) { arrayServicos.forEach(element => {%>
+                                    <% console.log(arrayServicos); %>
+                                        <tr class="border border-dark-subtle">
+                                            <td class="border border-dark-subtle">
+                                                <%= element.id %>
+                                            </td>
+                                            <td class="border border-dark-subtle">
+                                                <%= element.valor %>
+                                            </td>
+                                            <td class="border border-dark-subtle">
+                                                <%= element.tempoentrega %>
+                                            </td>
+                                            <td class="border border-dark-subtle">
+                                                <%= element.tipo %>
+                                            </td>
+                                            <td class="border border-dark-subtle">
+                                                <!--TODO colocar img de edição e deleção de serviço  --></td>
+                                            <% })}else { %>
+                                                <td colspan="5">Nenhum serviço cadastrado na sua conta</td>
+                                                <%} %>
+                                        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a class="btn btn-primary" href="/cadastrar" role="button">Cadastrar novo serviço</a>
+                </div>
+
         </div>
-
-        <%- include('includes/messages'); %>
-
         <%- include ("./includes/footer.ejs") %>
-    </body>
+</body>
+
 </html>

@@ -1,8 +1,14 @@
 const Authenticator = require("../repository/models/authenticator");
+const Servicos = require("../repository/models/servico.js");
 
-exports.render = (req, res) => {
+exports.render = async (req, res) => {
     if (req.session.user) {
-        return res.render("servico");
+        console.log(req.session.user);
+        const servicos = new Servicos(req.body, req.session);
+        arrayServicos = [];
+        arrayServicos = await servicos.findAllServicoFromCliente();
+        res.locals.servicos = arrayServicos;
+        return res.render("servico", { arrayServicos });
     } else {
         return res.render("login");
     }
