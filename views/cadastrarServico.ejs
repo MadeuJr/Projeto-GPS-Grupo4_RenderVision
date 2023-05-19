@@ -8,7 +8,27 @@
 
 <body>
 
-    <%- include ("./includes/header.ejs") %>
+    <header>
+        <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="logo" width="150px" />
+                </a>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item btn btn-primary mx-2 active">
+                        <a class="nav-link" href="/login">Serviços</a>
+                      </li>
+                    <li class="nav-item btn btn-primary mx-2">
+                      <a class="nav-link " href="/perfil">Perfil de Usuário</a>
+                    </li>
+                    <li class="nav-item btn btn-primary mx-2">
+                        <a class="nav-link" href="/logoff">Fazer Logoff</a>
+                    </li>
+                  </ul>
+            </div>
+        </nav>
+    </header>
+    
 
         <div class="container text-center mt-5 ">
             <%- include('includes/messages'); %>
@@ -95,6 +115,9 @@
                     </div>
                 </div>
             </div>
+            <div class="position-sticky bottom-0" style="width: 100%;">
+                <%- include ("./includes/footer.ejs") %>
+            </div>
             <script> function calculaValorServico(){
                 var altServi  = parseFloat(document.getElementById("altura").value);
                 var compServi = parseFloat(document.getElementById("comprimento").value);
@@ -103,7 +126,7 @@
                 var valorServi = (altServi * compServi * largServi * 10000);
                 var tempoServi = (altServi * compServi * largServi * 1500);
                 document.getElementById("valor").setAttribute("value", valorServi.toFixed(2));
-                document.getElementById("valor").setAttribute("value", valorServi.toFixed(0));
+                document.getElementById("tempo").setAttribute("value", valorServi.toFixed(0));
             
             }</script>
 

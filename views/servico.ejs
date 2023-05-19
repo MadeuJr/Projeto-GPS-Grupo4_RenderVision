@@ -1,65 +1,88 @@
 <!-- TODO preparar view servicos -->
 <!-- TODO estilizar site -->
 <!DOCTYPE html>
-<html lang="en">
+<html style="height: 100%;">
 
 <head>
     <%- include ("./includes/head.ejs") %>
 </head>
 
-<body>
-    <%- include ("./includes/header-logado.ejs") %>
+<body style="min-height: 100%;">
+    <header>
+        <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="logo" width="150px" />
+                </a>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item btn btn-primary mx-2 active">
+                        <a class="nav-link" href="/login">Serviços</a>
+                    </li>
+                    <li class="nav-item btn btn-primary mx-2">
+                        <a class="nav-link " href="/perfil">Perfil de Usuário</a>
+                    </li>
+                    <li class="nav-item btn btn-primary mx-2">
+                        <a class="nav-link" href="/logoff">Fazer Logoff</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
 
-        <div class="container text-center mt-5 ">
-            <%- include('includes/messages'); %>
-                <div>
-                    <h1>Serviços</h1>
-                    <br>
+
+    <div class="container text-center mt-5 ">
+        <%- include('includes/messages'); %>
+            <div>
+                <h1>Serviços</h1>
+                <br>
+            </div>
+
+            <div>
+                <div class="table-responsive">
+                    <table class="table border border-dark-subtle ">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="border border-dark-subtle">ID Serviço</th>
+                                <th scope="col" class="border border-dark-subtle">Valor</th>
+                                <th scope="col" class="border border-dark-subtle">Tempo de Entrega</th>
+                                <th scope="col" class="border border-dark-subtle">Tipo</th>
+                                <th scope="col" class="border border-dark-subtle">Edição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (arrayServicos.length> 0) { arrayServicos.forEach(element => {%>
+                                <% console.log(arrayServicos); %>
+                                    <tr class="border border-dark-subtle">
+                                        <td class="border border-dark-subtle">
+                                            <%= element.id %>
+                                        </td>
+                                        <td class="border border-dark-subtle">
+                                            <%= element.valor %>
+                                        </td>
+                                        <td class="border border-dark-subtle">
+                                            <%= element.tempoentrega %>
+                                        </td>
+                                        <td class="border border-dark-subtle">
+                                            <%= element.tipo %>
+                                        </td>
+                                        <td class="border border-dark-subtle">
+                                            <!--TODO colocar img de edição e deleção de serviço  -->
+                                        </td>
+                                        <% })}else { %>
+                                            <td colspan="5">Nenhum serviço cadastrado na sua conta</td>
+                                            <%} %>
+                                    </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <div>
-                    <div class="table-responsive">
-                        <table class="table border border-dark-subtle ">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="border border-dark-subtle">ID Serviço</th>
-                                    <th scope="col" class="border border-dark-subtle">Valor</th>
-                                    <th scope="col" class="border border-dark-subtle">Tempo de Entrega</th>
-                                    <th scope="col" class="border border-dark-subtle">Tipo</th>
-                                    <th scope="col" class="border border-dark-subtle">Edição</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% if (arrayServicos.length> 0) { arrayServicos.forEach(element => {%>
-                                    <% console.log(arrayServicos); %>
-                                        <tr class="border border-dark-subtle">
-                                            <td class="border border-dark-subtle">
-                                                <%= element.id %>
-                                            </td>
-                                            <td class="border border-dark-subtle">
-                                                <%= element.valor %>
-                                            </td>
-                                            <td class="border border-dark-subtle">
-                                                <%= element.tempoentrega %>
-                                            </td>
-                                            <td class="border border-dark-subtle">
-                                                <%= element.tipo %>
-                                            </td>
-                                            <td class="border border-dark-subtle">
-                                                <!--TODO colocar img de edição e deleção de serviço  --></td>
-                                            <% })}else { %>
-                                                <td colspan="5">Nenhum serviço cadastrado na sua conta</td>
-                                                <%} %>
-                                        </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <a class="btn btn-primary" href="/servicos/cadastrar" role="button">Cadastrar novo serviço</a>
-                </div>
-
+                <a class="btn btn-primary" href="/servicos/cadastrar" role="button">Cadastrar novo serviço</a>
+            </div>
         </div>
-        <%- include ("./includes/footer.ejs") %>
+        <div class="position-fixed bottom-0" style="width: 100%;">
+            <%- include ("./includes/footer.ejs") %>
+        </div>
+            
 </body>
 
 </html>

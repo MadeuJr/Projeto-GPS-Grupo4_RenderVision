@@ -1,15 +1,111 @@
 <!DOCTYPE html>
+
 <head>
     <%- include ("./includes/head.ejs") %>
+        <link rel="stylesheet" href="/css/carousel.css">
 </head>
+
 <body>
-    <%- include ("./includes/header.ejs") %>
-
+    <header>
+        <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="logo" width="150px" />
+                </a>
+                <ul class="nav justify-content-end" data-bs-theme="dark">
+                    <li class="nav-item btn btn-primary">
+                      <a class="nav-link " href="/login">Login</a>
+                    </li>
+                  </ul>
+            </div>
+        </nav>
+    </header>
     
-     <!-- https://codepen.io/J0hn03cb1ac8a4/pen/MWYeQqp -->
 
-     <!-- TODO Create Landing Page-->
-     <h2>Landing Page</h2>
-     
+
+        <div class="carousel">
+            <div class="progress-bar progress-bar--primary hide-on-desktop">
+                <div class="progress-bar__fill"></div>
+            </div>
+
+            <header class="main-post-wrapper">
+
+                <div class="slides">
+                    <article class="main-post main-post--active">
+                        <div class="main-post__image">
+                            <img src="/images/img1.jpg" />
+                        </div>
+                        <div class="main-post__content">
+                            <div class="main-post__tag-wrapper">
+                                <span class="main-post__tag"></span>
+                            </div>
+                            <h1 class="main-post__title">Renderização de alta qualidade</h1>
+
+                        </div>
+                    </article>
+                    <article class="main-post main-post--not-active">
+                        <div class="main-post__image">
+                            <img src="/images/img3.jpg" />
+                        </div>
+                        <div class="main-post__content">
+                            <div class="main-post__tag-wrapper">
+                                <span class="main-post__tag"></span>
+                            </div>
+                            <h1 class="main-post__title">Diversos tipos de objetos podem ser renderizado</h1>
+
+                        </div>
+                    </article>
+                    <article class="main-post main-post--not-active">
+                        <div class="main-post__image">
+                            <img src="/images/img2.png" />
+                        </div>
+                        <div class="main-post__content">
+                            <div class="main-post__tag-wrapper">
+                                <span class="main-post__tag"></span>
+                            </div>
+                            <h1 class="main-post__title">Tudo isso com o melhor custo benefício
+                            </h1>
+                        </div>
+                    </article>
+                </div>
+            </header>
+
+            <div class="posts-wrapper hide-on-mobile">
+                <article class="post post--active">
+                    <div class="progress-bar">
+                        <div class="progress-bar__fill"></div>
+                    </div>
+                    <header class="post__header">
+                        <span class="post__tag"></span>
+                        <p class="post__published"></p>
+                    </header>
+                    <h2 class="post__title">Qualidade</h2>
+                </article>
+                <article class="post">
+                    <div class="progress-bar">
+                        <div class="progress-bar__fill"></div>
+                    </div>
+                    <header class="post__header">
+                        <span class="post__tag"></span>
+                        <p class="post__published"></p>
+                    </header>
+                    <h2 class="post__title">Quantidade</h2>
+                </article>
+                <article class="post">
+                    <div class="progress-bar">
+                        <div class="progress-bar__fill"></div>
+                    </div>
+                    <header class="post__header">
+                        <span class="post__tag"></span>
+                        <p class="post__published"></p>
+                    </header>
+                    <h2 class="post__title">Custo benefício
+                    </h2>
+                </article>
+            </div>
+        </div>
+        <script src="/scripts/carousel.js"></script>
+        <%- include ("./includes/footer.ejs") %>
 </body>
-</html> 
+
+</html>

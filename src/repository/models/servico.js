@@ -17,6 +17,7 @@ class Servico {
             comprimento: this.body.comprimento,
             largura: this.body.largura,
             valor: this.body.valor,
+            tempoentrega: this.body.tempo,
             idCliente: this.user.id
         })
     }

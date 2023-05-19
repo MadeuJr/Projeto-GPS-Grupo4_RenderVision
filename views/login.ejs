@@ -7,91 +7,111 @@
 
 <body>
 
-    <%- include ("./includes/header.ejs") %>
+    <header>
+        <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="logo" width="150px" />
+                </a>
+                <ul class="nav justify-content-end" data-bs-theme="dark">
+                    <li class="nav-item btn btn-primary active">
+                      <a class="nav-link " href="/login">Login</a>
+                    </li>
+                  </ul>
+            </div>
+        </nav>
+    </header>
 
         <div class="container text-center mt-5 ">
             <%- include('includes/messages'); %>
-            <div class="row position-relative">
-                <div class="col align-middle mt-auto mb-auto">
-                    <fieldset class="border border-2 rounded">
-                        <h3 class="my-4">Entrar</h3>
+                <div class="row position-relative">
+                    <div class="col align-middle mt-auto mb-auto">
+                        <fieldset class="border border-2 rounded">
+                            <h3 class="my-4">Entrar</h3>
 
-                        <form name="loginForm" method="post" action="/login/login">
-                            <div class="row">
+                            <form name="loginForm" method="post" action="/login/login">
+                                <div class="row">
 
-                                <div class="col mb-3">
-                                    <label for="login">Insira seu CPF, CNPJ</label>
+                                    <div class="col mb-3">
+                                        <label for="login">Insira seu CPF, CNPJ</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control border border-dark-subtle " type="text" name="login">
+                                    </div>
                                 </div>
-                                <div class="col mb-3 me-3">
-                                    <input class="form-control border border-dark-subtle " type="text" name="login">
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="pass">Insira sua senha:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control border border-dark-subtle" type="password"
+                                            name="pass">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="pass">Insira sua senha:</label>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">Entrar!</button>
                                 </div>
-                                <div class="col mb-3 me-3">
-                                    <input class="form-control border border-dark-subtle" type="password" name="pass">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Entrar!</button>
-                            </div>
 
-                        </form>
-                    </fieldset>
+                            </form>
+                        </fieldset>
+                    </div>
+                    <div class="col mt-auto mb-auto">
+                        <fieldset class="border border-2 rounded">
+                            <h3 class="my-4">Registrar novo usuário</h3>
+                            <form name="registerForm" method="post" action="/login/register">
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="login">CPF ou CNPJ:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control border border-dark-subtle" type="text" name="login">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="name">Nome ou Nome da Empresa:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control border border-dark-subtle" type="text" name="name">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="tel">Telefone:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control border border-dark-subtle" type="tel" name="tel">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="email">E-mail:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control border border-dark-subtle" type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="pass">Senha:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control border border-dark-subtle" type="password"
+                                            name="pass">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">Registrar!</button>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
                 </div>
-                <div class="col mt-auto mb-auto">
-                    <fieldset class="border border-2 rounded">
-                        <h3 class="my-4">Registrar novo usuário</h3>
-                        <form name="registerForm" method="post" action="/login/register">
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="login">CPF ou CNPJ:</label>
-                                </div>
-                                <div class="col mb-3 me-3">
-                                    <input class="form-control border border-dark-subtle" type="text" name="login">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="name">Nome ou Nome da Empresa:</label>
-                                </div>
-                                <div class="col mb-3 me-3">
-                                    <input class="form-control border border-dark-subtle" type="text" name="name">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="tel">Telefone:</label>
-                                </div>
-                                <div class="col mb-3 me-3">
-                                    <input class="form-control border border-dark-subtle" type="tel" name="tel">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="email">E-mail:</label>
-                                </div>
-                                <div class="col mb-3 me-3">
-                                    <input class="form-control border border-dark-subtle" type="email" name="email">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label  for="pass">Senha:</label>
-                                </div>
-                                <div class="col mb-3 me-3">
-                                    <input class="form-control border border-dark-subtle" type="password" name="pass">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Registrar!</button>
-                            </div>
-                        </form>
-                    </fieldset>
-                </div>
-            </div>
+        </div>
+        <div class="position-absolute bottom-0" style="width: 100%;">
+            <%- include ("./includes/footer.ejs") %>
+        </div>
+        
 </body>
 
 </html>
