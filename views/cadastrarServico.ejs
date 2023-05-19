@@ -3,6 +3,7 @@
 
 <head>
     <%- include ("./includes/head.ejs") %>
+    
 </head>
 
 <body>
@@ -16,16 +17,17 @@
                         <div class="col mt-auto mb-auto">
                             <fieldset class="border border-2 rounded">
                                 <h3 class="my-4">Cadastrar ordem de servico</h3>
-                                <form name="registerForm" method="post" action="/cadastrar">
+                                <form name="registerForm" method="post" action="/servicos/cadastrar">
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label for="desc">Descrição:</label>
                                         </div>
                                         <div class="col mb-3 me-3">
                                             <input required class="form-control border border-dark-subtle" type="text"
-                                                name="login">
+                                                name="descricao">
                                         </div>
                                     </div>
+                                    
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label for="name">Tipo de renderização:</label>
@@ -41,11 +43,14 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <p>Os parametros de altura, largura e comprimento são recebidos no sistema em centrimetros (CM)</p>
+                                    </div>
+                                    <div class="row">
                                         <div class="col mb-3">
                                             <label for="tel">Altura:</label>
                                         </div>
                                         <div class="col mb-3 me-3">
-                                            <input required class="form-control border border-dark-subtle" type="number" step=0.01 max="1000" min="0.01" value="0,00"name="altura">
+                                            <input onblur="calculaValorServico()" required class="form-control border border-dark-subtle" type="number" step=0.1 max="1000" min="0.1" value="0.0"name="altura" id="altura">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -53,7 +58,7 @@
                                             <label for="largura">Largura:</label>
                                         </div>
                                         <div class="col mb-3 me-3">
-                                            <input required class="form-control border border-dark-subtle" type="number" step=0.01 max="1000" min="0.01" value="0,00"name="largura">
+                                            <input onblur="calculaValorServico()"  required class="form-control border border-dark-subtle" type="number" step=0.1 max="1000" min="0.1" value="0.0"name="largura", id="largura">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -61,19 +66,28 @@
                                             <label for="tel">Comprimento:</label>
                                         </div>
                                         <div class="col mb-3 me-3">
-                                            <input required class="form-control border border-dark-subtle" type="number" step=0.01 max="1000" min="0.01" value="0,00"name="altura">
+                                            <input onblur="calculaValorServico()" required class="form-control border border-dark-subtle" type="number" step=0.1 max="1000" min="0.1" value="0.0"name="comprimento" id="comprimento">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col mb-3">
-                                            <label for="tel">Custo:</label>
+                                            <label for="tel">Custo em R$:</label>
                                         </div>
                                         <div class="col mb-3 me-3">
-                                            <input class="form-control"  disabled readonly type="number" value="0" >
+                                            <input class="form-control" readonly type="number" id="valor" name="valor" value="0.00">
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <label for="tel">Tempo de entrega em minutos:</label>
+                                        </div>
+                                        <div class="col mb-3 me-3">
+                                            <input class="form-control" readonly type="number" id="tempo" name="tempo" value="0">
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary">Registrar!</button>
+                                        <button type="submit" class="btn btn-primary">Cadastrar!</button>
                                     </div>
                                 </form>
                             </fieldset>
@@ -81,6 +95,18 @@
                     </div>
                 </div>
             </div>
+            <script> function calculaValorServico(){
+                var altServi  = parseFloat(document.getElementById("altura").value);
+                var compServi = parseFloat(document.getElementById("comprimento").value);
+                var largServi = parseFloat(document.getElementById("largura").value);
+            
+                var valorServi = (altServi * compServi * largServi * 10000);
+                var tempoServi = (altServi * compServi * largServi * 1500);
+                document.getElementById("valor").setAttribute("value", valorServi.toFixed(2));
+                document.getElementById("valor").setAttribute("value", valorServi.toFixed(0));
+            
+            }</script>
+
         </body>
 
 

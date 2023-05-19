@@ -8,7 +8,18 @@ class Servico {
             (this.user = session.user);
     }
 
-    async createServico() {}
+    async createServico() {
+        console.log(this.body);
+        this.service = await ServicoDB.create({
+            descricao: this.body.descricao,
+            tipo: this.body.tipo,
+            altura: this.body.altura,
+            comprimento: this.body.comprimento,
+            largura: this.body.largura,
+            valor: this.body.valor,
+            idCliente: this.user.id
+        })
+    }
 
     async findAllServicoFromCliente() {
         const servicos = await ServicoDB.findAll({

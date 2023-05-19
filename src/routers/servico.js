@@ -1,22 +1,13 @@
 const express = require("express");
 const router = express();
+const servicosController = require("../controllers/servicoController.js");
+const { middleware } = require("../middlewares/middlewareGlobal.js");
 
 
+router.get("/servicos", middleware, servicosController.render)
 
-router.get("/servico", async (req, res) => {
-    res.render("servico")
-    //   TODO colocar function de procurar servico
-});
-
-router.get("/servico/:id", async (req, res) => {
-   //   TODO colocar function de procurar servico especifico
-});
-
-
-
-router.delete("/servico/:id", async (req, res) => {
-   //   TODO colocar function de deletar servico
-});
+router.get("/servicos/cadastrar", middleware, servicosController.renderCreateServico)
+router.post("/servicos/cadastrar", middleware, servicosController.createServico)
 
 
 module.exports = router;

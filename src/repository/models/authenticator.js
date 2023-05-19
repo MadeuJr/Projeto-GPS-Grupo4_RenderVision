@@ -46,8 +46,7 @@ class Authenticator {
             nome: this.body.name,
             senha: this.body.pass,
             telefone: this.body.tel,
-            email: this.body.email,
-            cargo: "Cliente",
+            email: this.body.email
         });
     }
 

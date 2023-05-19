@@ -1,14 +1,9 @@
 const Authenticator = require("../repository/models/authenticator");
-const Servicos = require("../repository/models/servico.js");
+
 
 exports.render = async (req, res) => {
     if (req.session.user) {
-        console.log(req.session.user);
-        const servicos = new Servicos(req.body, req.session);
-        arrayServicos = [];
-        arrayServicos = await servicos.findAllServicoFromCliente();
-        res.locals.servicos = arrayServicos;
-        return res.render("servico", { arrayServicos });
+        res.redirect("/servicos")
     } else {
         return res.render("login");
     }
@@ -27,7 +22,7 @@ exports.login = async (req, res) => {
             req.flash("success", "Você entrou no sistema.");
             req.session.user = login.user;
             req.session.save(function () {
-                return res.redirect("back");
+                return res.redirect("/servicos");
             });
         }
     } catch (error) {
