@@ -1,11 +1,15 @@
 const bcrypt = require("bcrypt");
 const validator = require("validator");
-const Cliente = require("./clientedb.js");
+const ClienteDB = require("./clientedb.js");
 const validatorlogin = require("cpf-cnpj-validator");
+const { where } = require("sequelize");
+const { set } = require("../../routers/cliente.js");
 
-class Authenticator {
+class Cliente {
     constructor(body) {
-        (this.body = body), (this.errors = []), (this.user = null);
+        this.user = null;
+        this.body = body;
+        this.errors = [];
     }
 
     async login() {
@@ -15,7 +19,7 @@ class Authenticator {
 
         if (this.errors.length > 0) return;
 
-        this.user = await Cliente.findOne({ where: { id: this.body.login } });
+        this.user = await ClienteDB.findOne({ where: { id: this.body.login } });
 
         if (this.user === null) {
             this.errors.push("Usúario não encontrado ou senha inválida");
@@ -41,17 +45,17 @@ class Authenticator {
         const salt = bcrypt.genSaltSync();
         this.body.pass = bcrypt.hashSync(this.body.pass, salt);
 
-        this.user = await Cliente.create({
+        this.user = await ClienteDB.create({
             id: this.body.login,
             nome: this.body.name,
             senha: this.body.pass,
             telefone: this.body.tel,
-            email: this.body.email
+            email: this.body.email,
         });
     }
 
     async userExists() {
-        this.user = await Cliente.findOne({ where: { id: this.body.login } });
+        this.user = await ClienteDB.findOne({ where: { id: this.body.login } });
         if (this.user) this.errors.push("Usuário já existe");
     }
 
@@ -74,6 +78,30 @@ class Authenticator {
             this.errors.push("A senha precisa ter entre 3 e 50 caracteres.");
         }
     }
+    async deleteUser(idDelete) {
+        ClienteDB.destroy({
+            where: {
+                id: idDelete,
+            },
+        });
+    }
+
+    async updateUser() {
+        
+        await ClienteDB.update(
+            { nome: this.body.nome, telefone: this.body.telefone, email: this.body.email },
+            {
+                where: {
+                    id: this.body.CPFCNPJ,
+                },
+            }
+        );
+    }
+
+    async findUser(idUser){
+        const userFound = await ClienteDB.findOne({ where: { id: idUser} })
+        return userFound;
+    }
 }
 
-module.exports = Authenticator;
+module.exports = Cliente;

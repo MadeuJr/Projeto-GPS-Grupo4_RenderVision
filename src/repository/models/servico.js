@@ -28,9 +28,7 @@ class Servico {
         });
         return servicos;
     }
-
-    findAllServicos() {}
-
+    
     deleteServico() {}
 
     updateServico() {}

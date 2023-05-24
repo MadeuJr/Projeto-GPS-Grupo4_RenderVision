@@ -1,4 +1,4 @@
-const Authenticator = require("../repository/models/authenticator");
+const Cliente = require("../repository/models/cliente");
 
 
 exports.render = async (req, res) => {
@@ -11,7 +11,7 @@ exports.render = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        const login = new Authenticator(req.body);
+        const login = new Cliente(req.body);
         await login.login();
         if (login.errors.length > 0) {
             req.flash("errors", login.errors);
@@ -33,7 +33,7 @@ exports.login = async (req, res) => {
 
 exports.register = async (req, res) => {
     try {
-        const registration = new Authenticator(req.body);
+        const registration = new Cliente(req.body);
         await registration.register();
 
         if (registration.errors.length > 0) {
@@ -55,8 +55,8 @@ exports.register = async (req, res) => {
 };
 
 exports.logout = function (req, res) {
-    req.session.save(function () {
-        req.session.destroy();
+    req.session.regenerate(function(err) {
+        req.flash("success", "Você fez logoff com sucesso");
         return res.redirect("/login");
-    });
+      })
 };

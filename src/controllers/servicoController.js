@@ -1,20 +1,26 @@
 const Servicos = require("../repository/models/servico.js");
 
 exports.render = async (req, res) => {
-    const servicos = new Servicos(req.body, req.session);
-    arrayServicos = [];
-    arrayServicos = await servicos.findAllServicoFromCliente();
-    res.locals.servicos = arrayServicos;
-    res.render("servico", { arrayServicos });
+    if (req.session.user) {
+        const servicos = new Servicos(req.body, req.session);
+        arrayServicos = [];
+        arrayServicos = await servicos.findAllServicoFromCliente();
+        res.locals.servicos = arrayServicos;
+        res.render("servico", { arrayServicos });
+    } else {
+        req.session.save(function () {
+            return res.redirect("/login");
+        });
+    }
 };
 
 exports.renderCreateServico = (req, res) => {
     if (req.session.user) {
-        return res.render("cadastrarServico")
+        return res.render("cadastrarServico");
     } else {
         req.session.save(function () {
             return res.redirect("/login");
-    });
+        });
     }
 };
 
@@ -33,5 +39,3 @@ exports.createServico = (req, res) => {
         return res.redirect("back");
     });
 };
-
-

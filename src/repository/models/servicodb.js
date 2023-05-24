@@ -45,13 +45,9 @@ const Servico = database.define("servico", {
     }
 })
 
-Servico.belongsTo(Cliente, {
-    foreignKey: "idCliente",
-    constraint: true
-})
-
 Cliente.hasMany(Servico,{
-    foreignKey: "idCliente"
+    foreignKey: "idCliente",
+    onDelete: 'cascade'
 });
 
 module.exports = Servico;

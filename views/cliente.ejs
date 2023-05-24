@@ -1,15 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include ("./includes/head.ejs") %>
-    </head>
-    <body>
-        <%- include ("./includes/header.ejs") %>
 
-        <div>
-            <h1>Clientes</h1>
+<head>
+    <%- include ("./includes/head.ejs") %>
+</head>
+    <body>
+        <header>
+            <nav class="navbar bg-primary" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">
+                        <img src="/images/logo.png" alt="logo" width="150px" />
+                    </a>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item btn btn-primary mx-2">
+                            <a class="nav-link" href="/login">Serviços</a>
+                        </li>
+                        <li class="nav-item btn btn-primary mx-2 active">
+                            <a class="nav-link " href="/cliente">Perfil de Usuário</a>
+                        </li>
+                        <li class="nav-item btn btn-primary mx-2">
+                            <a class="nav-link" href="/logoff">Fazer Logoff</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container text-center mt-5 ">
+            <div >
+                
+            </div>    
+
+            <div class="container text-center mt-5 ">
+                <h1>Perfil de Usuário</h1>
+            </div>
+            <%- include('includes/messages'); %>
+            <div class="row position-relative my-5">
+                <div class="col align-middle mt-auto mb-auto">
+                    <div class="col mt-auto mb-auto">
+                        <fieldset class="border border-2 rounded">
+
+                            <form name="userUpdateForm" method="post" action="/cliente">
+                                <div class="row">
+                                    <div class="col mb-3 mt-3">
+                                        <label for="nome">Seu nome:</label>
+                                    </div>
+                                    <div class="col mb-3 mt-3 mx-3">
+                                        <input required class="form-control border border-dark-subtle" type="text"
+                                            name="nome" value="<%= user.nome %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3 mt-3">
+                                        <label for="CPFCNPJ">Seu CPF ou CNPJ:</label>
+                                    </div>
+                                    <div class="col mb-3 mt-3 mx-3">
+                                        <input required class="form-control-plaintext" type="text" readonly id="CPFCNPJ"
+                                            name="CPFCNPJ" value="<%= user.id %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3 mt-3">
+                                        <label for="email">Seu E-mail:</label>
+                                    </div>
+                                    <div class="col mb-3 mt-3 mx-3">
+                                        <input required class="form-control border border-dark-subtle" type="text"
+                                        name="email" value="<%= user.email %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3 mt-3">
+                                        <label for="telefone">Seu Telefone:</label>
+                                    </div>
+                                    <div class="col mb-3 mt-3 mx-3">
+                                        <input required class="form-control border border-dark-subtle" type="text"
+                                            name="telefone" value="<%= user.telefone %>">
+                                    </div>
+                                </div>
+
+
+                                <div class="col mb-3 mt-3">
+                                    <a class="btn btn-secondary" href="/servicos">Retornar ao Menu de Serviços</a>
+                                    <button type="submit" class="btn btn-primary">Atualizar Dados!</button>
+                                    <button id="myInput" type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#modalDelete">
+                                        Excluir Perfil!
+                                    </button>
+                                    
+                                </div>
+
+
+
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <%- include ("./includes/footer.ejs") %>
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmação de exclusão</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente excluir seu perfil?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <a class="btn btn-danger" href="/cliente/deletar">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="position-fixed bottom-0" style="width: 100%;">
+            <%- include ("./includes/footer.ejs") %>
+        </div>
     </body>
+
 </html>
