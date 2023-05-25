@@ -31,15 +31,15 @@
 
 
 
-    <div class="container text-center mt-5 ">
+    <div class="container text-center mt-5">
         <%- include('includes/messages'); %>
             <div>
                 <h1>Serviços</h1>
                 <br>
             </div>
 
-            <div>
-                <div class="table-responsive">
+            <div style="margin-bottom: 100px;">
+                <div class="table-responsive mb-5">
                     <table class="table border border-dark-subtle ">
                         <thead>
                             <tr>
@@ -54,21 +54,43 @@
                             <% if (arrayServicos.length> 0) { arrayServicos.forEach(element => {%>
                                 <% console.log(arrayServicos); %>
                                     <tr class="border border-dark-subtle">
-                                        <td class="border border-dark-subtle">
+                                        <td class="border border-dark-subtle align-middle">
                                             <%= element.id %>
                                         </td>
-                                        <td class="border border-dark-subtle">
-                                            <%= element.valor %>
+                                        <td class="border border-dark-subtle align-middle">
+                                            R$ <%= element.valor %>
                                         </td>
-                                        <td class="border border-dark-subtle">
-                                            <%= element.tempoentrega %>
+                                        <td class="border border-dark-subtle align-middle">
+                                            <%= element.tempoentrega %> min
                                         </td>
-                                        <td class="border border-dark-subtle">
+                                        <td class="border border-dark-subtle align-middle">
                                             <%= element.tipo %>
                                         </td>
                                         <td class="border border-dark-subtle">
-                                            <a class="btn btn-danger" href="/servicos/<%=element.id %>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg></a>
-                                            
+                                            <a class="btn btn-secondary" href="/servicos/detalhes/<%=element.id %>"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 36 36">
+                                                    <path fill="currentColor"
+                                                        d="M32 6H4a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm0 22H4V8h28Z"
+                                                        class="clr-i-outline clr-i-outline-path-1" />
+                                                    <path fill="currentColor"
+                                                        d="M9 14h18a1 1 0 0 0 0-2H9a1 1 0 0 0 0 2Z"
+                                                        class="clr-i-outline clr-i-outline-path-2" />
+                                                    <path fill="currentColor"
+                                                        d="M9 18h18a1 1 0 0 0 0-2H9a1 1 0 0 0 0 2Z"
+                                                        class="clr-i-outline clr-i-outline-path-3" />
+                                                    <path fill="currentColor"
+                                                        d="M9 22h10a1 1 0 0 0 0-2H9a1 1 0 0 0 0 2Z"
+                                                        class="clr-i-outline clr-i-outline-path-4" />
+                                                    <path fill="none" d="M0 0h36v36H0z" />
+                                                </svg></a>
+                                            <a class="btn btn-danger" href="/servicos/deletar/<%=element.id %>"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 24 24">
+                                                    <path fill="currentColor"
+                                                        d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z" />
+                                                </svg></a>
+
                                         </td>
                                         <% })}else { %>
                                             <td colspan="5">Nenhum serviço cadastrado na sua conta</td>
@@ -79,11 +101,13 @@
                 </div>
                 <a class="btn btn-primary" href="/servicos/cadastrar" role="button">Cadastrar novo serviço</a>
             </div>
-        </div>
-        <div class="position-fixed bottom-0" style="width: 100%;">
-            <%- include ("./includes/footer.ejs") %>
-        </div>
-            
+            <br><br><br>
+    </div>
+
+    <div class="position-fixed bottom-0" style="width: 100%;">
+        <%- include ("./includes/footer.ejs") %>
+    </div>
+
 </body>
 
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include ("./includes/head.ejs") %>
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="logo" width="150px" />
+                </a>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item btn btn-primary mx-2 active">
+                        <a class="nav-link" href="/login">Serviços</a>
+                    </li>
+                    <li class="nav-item btn btn-primary mx-2">
+                        <a class="nav-link " href="/perfil">Perfil de Usuário</a>
+                    </li>
+                    <li class="nav-item btn btn-primary mx-2">
+                        <a class="nav-link" href="/logoff">Fazer Logoff</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container text-center mt-5 ">
+        <%- include('includes/messages'); %>
+            <div class="row position-relative">
+                <% if (serviceToDelete===null) { %>
+                    <div class="col align-middle mt-auto mb-auto">
+                        <div class="col mt-auto mb-auto">
+                            <h3>Servico não encontrado</h3>
+                        </div>
+                        <a class="btn btn-secondary" href="/servicos">Retornar ao Menu de Serviços</a>
+                    </div>
+                    <% } else { %>
+                        <div class="col mt-auto mb-auto">
+                            <fieldset class="border border-2 rounded">
+                                <form action="/servicos/deletar/<%= serviceToDelete.id  %>" method="post">
+                                    <div class="row position-relative">
+                                        <h3 class="my-5">Deseja realmente excluir o servico com ID <%= serviceToDelete.id %>?</h3>
+                                    </div>
+                                    <div class="row position-relative">
+                                        <div class="col my-5">
+                                            <a class="btn btn-secondary" href="/servicos">Retornar ao Menu de Serviços</a>
+                                            <button type="submit" class="btn btn-danger">Excluir!</button>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </form>
+                            </fieldset>
+                        </div>
+                        <% } %>
+            </div>
+    </div>
+
+    <div class="position-fixed bottom-0" style="width: 100%;">
+        <%- include ("./includes/footer.ejs") %>
+    </div>
+
+</body>
+
+</html>

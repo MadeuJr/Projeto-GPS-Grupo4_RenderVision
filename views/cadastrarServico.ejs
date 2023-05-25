@@ -30,7 +30,7 @@
     </header>
     
 
-        <div class="container text-center mt-5 ">
+        <div class="container text-center mt-5" >
             <%- include('includes/messages'); %>
                 <div class="row position-relative">
                     <div class="col align-middle mt-auto mb-auto">
@@ -107,15 +107,17 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
+                                        <a class="btn btn-secondary" href="/servicos">Retornar ao Menu de Serviços</a>
                                         <button type="submit" class="btn btn-primary">Cadastrar!</button>
                                     </div>
                                 </form>
+                                <br><br><br>
                             </fieldset>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="position-sticky bottom-0" style="width: 100%;">
+            <div class="position-fixed bottom-0" style="width: 100%;">
                 <%- include ("./includes/footer.ejs") %>
             </div>
             <script> function calculaValorServico(){

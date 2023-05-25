@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ("./includes/head.ejs") %>
+</head>
+    <body onload="calculaValorServico()">
+        <header>
+            <nav class="navbar bg-primary" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">
+                        <img src="/images/logo.png" alt="logo" width="150px" />
+                    </a>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item btn btn-primary mx-2">
+                            <a class="nav-link" href="/login">Serviços</a>
+                        </li>
+                        <li class="nav-item btn btn-primary mx-2 active">
+                            <a class="nav-link " href="/cliente">Perfil de Usuário</a>
+                        </li>
+                        <li class="nav-item btn btn-primary mx-2">
+                            <a class="nav-link" href="/logoff">Fazer Logoff</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container text-center mt-5 ">
+
+            <div class="container text-center mt-5 ">
+                <h1>Detalhes do Servico <%= serviceToUpdate.id %></h1>
+            </div>
+            <%- include('includes/messages'); %>
+            <div class="row position-relative my-5">
+                <div class="col align-middle mt-auto mb-auto">
+                    <div class="col mt-auto mb-auto">
+                        <fieldset class="border border-2 rounded">
+                            <form name="registerForm" method="post" action="/servicos/detalhes/<%= serviceToUpdate.id %>">
+                                <div class="row mt-3">
+                                    <div class="col mb-3">
+                                        <label for="desc">Descrição:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input required class="form-control border border-dark-subtle" type="text"
+                                            name="descricao" value="<%= serviceToUpdate.descricao %>">
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="name">Tipo de renderização:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                       <div class="mb-3">
+                                        <input class="form-control" readonly type="text" name="tipo" value="<%= serviceToUpdate.tipo %>">
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>Os parametros de altura, largura e comprimento são recebidos no sistema em centrimetros (CM)</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="tel">Altura:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input onblur="calculaValorServico()" required class="form-control border border-dark-subtle" type="number" step=0.1 max="1000" min="0.1" value="<%= serviceToUpdate.altura %>"name="altura" id="altura">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="largura">Largura:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input onblur="calculaValorServico()"  required class="form-control border border-dark-subtle" type="number" step=0.1 max="1000" min="0.1" value="<%= serviceToUpdate.largura %>"name="largura", id="largura">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="tel">Comprimento:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input onblur="calculaValorServico()" required class="form-control border border-dark-subtle" type="number" step=0.1 max="1000" min="0.1" value="<%= serviceToUpdate.comprimento %>"name="comprimento" id="comprimento">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="tel">Custo em R$:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control" readonly type="number" id="valor" name="valor" value="0.00">
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="tel">Tempo de entrega em minutos:</label>
+                                    </div>
+                                    <div class="col mb-3 me-3">
+                                        <input class="form-control" readonly type="number" id="tempo" name="tempo" value="0">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <a class="btn btn-secondary" href="/servicos">Retornar ao Menu de Serviços</a>
+                                    <button type="submit" class="btn btn-primary">Atualizar Detalhes!</button>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="position-fixed bottom-0" style="width: 100%;">
+            <%- include ("./includes/footer.ejs") %>
+        </div>
+    </body>
+
+    <script> function calculaValorServico(){
+        var altServi  = parseFloat(document.getElementById("altura").value);
+        var compServi = parseFloat(document.getElementById("comprimento").value);
+        var largServi = parseFloat(document.getElementById("largura").value);
+    
+        var valorServi = (altServi * compServi * largServi * 10000);
+        var tempoServi = (altServi * compServi * largServi * 1500);
+        document.getElementById("valor").setAttribute("value", valorServi.toFixed(2));
+        document.getElementById("tempo").setAttribute("value", valorServi.toFixed(0));
+    
+    }</script>
+
+</html>
